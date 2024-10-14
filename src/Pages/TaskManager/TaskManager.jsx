@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { addTask } from '../../Services/taskService';
 
 
-const TaskManager = () => {
+const TaskManager = ({modalclose}) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
@@ -12,6 +12,7 @@ const TaskManager = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await addTask(title, description, dueDate);
+    modalclose()
   };
 
   return (

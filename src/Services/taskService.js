@@ -1,6 +1,6 @@
 
 
-import { collection, addDoc, getDocs } from 'firebase/firestore'; 
+import { collection, addDoc, getDocs, deleteDoc, doc } from 'firebase/firestore'; 
 import { db } from '../../Firebase.config'; 
 export const addTask = async (title, description, dueDate, status = 'pending') => {
   try {
@@ -30,3 +30,26 @@ export const fetchTasks = async () => {
       return [];
     }
   };
+export const deleteTask= async(taskId)=>{
+  try{
+    const taskDoc= doc(db, 'tasks', taskId);
+    await deleteDoc(taskDoc)
+    console.log("task deleted with Id", taskId)
+
+  }
+  catch(error){
+    console.error("Error Deleteing Task", error)
+  }
+}
+
+export const updateTask= async(taskId,updatedData)=>{
+  try{
+
+    const taskDocRef=doc(db, 'task',taskId)
+    await(taskDocRef,updatedData)
+    console.log('task updated',taskId)
+  }
+  catch(error){
+    console.error("Error", error)
+  }
+}

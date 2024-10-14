@@ -10,6 +10,7 @@ import Login from './Pages/Login/Login.jsx';
 import Signup from './Pages/Signup/Signup.jsx';
 import AuthProvider from '../Provider/AuthProvider.jsx';
 import TaskBoard from './Pages/TaskBoard/TaskBoard.jsx';
+import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
 
 
 
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home></Home>,
+    errorElement: <ErrorPage></ErrorPage>
   },
   {
     path:'/login',
